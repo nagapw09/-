@@ -1,1 +1,82 @@
-Сдесь был код
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("N: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            Console.Write("M: ");
+            int m = Convert.ToInt32(Console.ReadLine());
+
+            double[,] Array = new double[n, m];
+
+            Random rand = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Array[i, j] = rand.NextDouble();
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(Array[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            double sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 1; j < m; j += 2)
+                {
+                    sum += Array[i, j];
+                }
+            }
+            Console.WriteLine("\nСумма элементов четных столбцов = " + sum);
+
+            Console.Write("\nВведите скаляр: ");
+            int k = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Array[i, j] = Array[i, j] * k;
+                }
+            }
+            Console.Write("\nМатрица умноженая на скаляр: \n");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(Array[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("\nПроверка матрицы на стохастичность:");
+            int Stah = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (Array[i, j] < 0 || Array[i, j] > 1) { Stah++; }
+                }
+            }
+            if (Stah == 1) 
+            { 
+                Console.WriteLine("Матрица стохастическая"); 
+            }
+            else 
+            { 
+                Console.WriteLine("Матрица не стохастическая"); 
+            }
+        }
+    }
+}
