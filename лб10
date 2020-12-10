@@ -16,12 +16,13 @@ namespace _10._1
         public Form1()
         {
             InitializeComponent();
-            form2 = new Form2();
         }
-        Form2 form2;
+
         private void button1_Click(object sender, EventArgs e)
         {
-            form2.Show();
+            Form form2 = new Form2();
+            this.Hide();
+            form2.ShowDialog();
         }
     }
 }
@@ -41,15 +42,16 @@ namespace _10._1
         public Form2()
         {
             InitializeComponent();
-            form3 = new Form3();
         }
-        Form3 form3;
         private void button1_Click(object sender, EventArgs e)
         {
-            form3.Show();
+            Form form3 = new Form3();
+            this.Hide();
+            form3.ShowDialog();
         }
     }
 }
+
 // форма 3
 using System;
 using System.Collections.Generic;
